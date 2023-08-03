@@ -1,12 +1,11 @@
-using AwesomeShopPatterns.API.Core.Enums;
-using AwesomeShopPatterns.API.Infrastructure.Deliveries;
-using AwesomeShopPatterns.API.Infrastructure.Payments;
+using Adapter.Core.Enums;
+using Adapter.Infrastructure.Deliveries;
+using Adapter.Infrastructure.Payments;
 
-namespace AwesomeShopPatterns.API.Infrastructure
+namespace Adapter.Infrastructure;
+
+public interface IOrderAbstractFactory
 {
-    public interface IOrderAbstractFactory
-    {
-        IPaymentService GetPaymentService(PaymentMethod method);
-        IDeliveryService GetDeliveryService();
-    }
+    IPaymentService GetPaymentService(PaymentMethod method);
+    IDeliveryService GetDeliveryService();
 }

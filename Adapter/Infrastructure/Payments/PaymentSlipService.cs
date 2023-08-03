@@ -1,29 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AwesomeShopPatterns.API.Application.Models;
-using AwesomeShopPatterns.API.Infrastructure.Payments.Adapters;
-using AwesomeShopPatterns.API.Infrastructure.Payments.Models;
+using Adapter.Application.Models;
+using Adapter.Infrastructure.Payments.Adapters;
 
-namespace AwesomeShopPatterns.API.Infrastructure.Payments
+namespace Adapter.Infrastructure.Payments;
+
+public class PaymentSlipService : IPaymentService
 {
-    public class PaymentSlipService : IPaymentService
+    private readonly IExternalPaymentSlipService _externalService;
+
+    public PaymentSlipService(IExternalPaymentSlipService externalService)
     {
-        private readonly IExternalPaymentSlipService _externalService;
+        _externalService = externalService;
+    }
 
-        public PaymentSlipService(IExternalPaymentSlipService externalService)
-        {
-            _externalService = externalService;
-        }
+    public object Process(OrderInputModel model)
+    {
+        var paymentSlipServiceAdapter = new PaymentSlipServiceAdapter(_externalService);
 
-        public object Process(OrderInputModel model)
-        {
-            var paymentSlipServiceAdapter = new PaymentSlipServiceAdapter(_externalService);
+        var paymentSlipModel = paymentSlipServiceAdapter.GeneratePaymentSlip(model);
 
-            var paymentSlipModel = paymentSlipServiceAdapter.GeneratePaymentSlip(model);
-
-            return "Dados do Boleto";
-        }
+        return "Dados do Boleto";
     }
 }

@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AwesomeShopPatterns.API.Application.Models;
+using Adapter.Application.Models;
 
-namespace AwesomeShopPatterns.API.Infrastructure.Deliveries
+namespace Adapter.Infrastructure.Deliveries;
+
+public interface IDeliveryService
 {
-    public interface IDeliveryService
-    {
-        void Deliver(OrderInputModel model);
-    }
+    void Deliver(OrderInputModel model);
 }

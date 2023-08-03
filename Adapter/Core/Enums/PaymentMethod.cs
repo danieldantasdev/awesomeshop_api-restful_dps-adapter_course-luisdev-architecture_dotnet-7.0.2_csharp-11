@@ -1,8 +1,7 @@
-namespace AwesomeShopPatterns.API.Core.Enums
+namespace Adapter.Core.Enums;
+
+public enum PaymentMethod
 {
-    public enum PaymentMethod
-    {
-        CreditCard = 1,
-        PaymentSlip = 2
-    }
+    CreditCard = 1,
+    PaymentSlip = 2
 }

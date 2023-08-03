@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AwesomeShopPatterns.API.Application.Models;
+using Adapter.Application.Models;
 
-namespace AwesomeShopPatterns.API.Infrastructure.Payments
+namespace Adapter.Infrastructure.Payments;
+
+public class CreditCardService : IPaymentService
 {
-    public class CreditCardService : IPaymentService
+    public object Process(OrderInputModel model)
     {
-        public object Process(OrderInputModel model)
-        {
-            return "Transação aprovada";
-        }
+        return "Transação aprovada";
     }
 }
