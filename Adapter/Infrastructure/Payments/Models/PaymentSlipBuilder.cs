@@ -1,53 +1,53 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+namespace Adapter.Infrastructure.Payments.Models;
 
-namespace AwesomeShopPatterns.API.Infrastructure.Payments.Models
+public class PaymentSlipBuilder
 {
-    public class PaymentSlipBuilder
+    private PaymentSlipModel _paymentSlipModel;
+
+    public PaymentSlipBuilder()
     {
-        private PaymentSlipModel _paymentSlipModel;
+    }
 
-        public PaymentSlipBuilder()
-        {
-        }
+    public PaymentSlipBuilder Start()
+    {
+        _paymentSlipModel = new PaymentSlipModel();
 
-        public PaymentSlipBuilder Start() {
-            _paymentSlipModel = new PaymentSlipModel();
+        return this;
+    }
 
-            return this;
-        }
+    public PaymentSlipBuilder WithReceiver(Receiver receiver)
+    {
+        _paymentSlipModel.Receiver = receiver;
 
-        public PaymentSlipBuilder WithReceiver(Receiver receiver) {
-            _paymentSlipModel.Receiver = receiver;
+        return this;
+    }
 
-            return this;
-        }
+    public PaymentSlipBuilder WithPayer(Payer payer)
+    {
+        _paymentSlipModel.Payer = payer;
 
-        public PaymentSlipBuilder WithPayer(Payer payer) {
-            _paymentSlipModel.Payer = payer;
+        return this;
+    }
 
-            return this;
-        }
+    public PaymentSlipBuilder WithPaymentDocument(string barCode, string ourNumber, decimal documentAmount)
+    {
+        _paymentSlipModel.BarCode = barCode;
+        _paymentSlipModel.OurNumber = ourNumber;
+        _paymentSlipModel.DocumentAmount = documentAmount;
 
-        public PaymentSlipBuilder WithPaymentDocument(string barCode, string ourNumber, decimal documentAmount) {
-            _paymentSlipModel.BarCode = barCode;
-            _paymentSlipModel.OurNumber = ourNumber;
-            _paymentSlipModel.DocumentAmount = documentAmount;
+        return this;
+    }
 
-            return this;
-        }
+    public PaymentSlipBuilder WithDates(DateTime processedAt, DateTime expiresAt)
+    {
+        _paymentSlipModel.ProcessedAt = processedAt;
+        _paymentSlipModel.ExpiresAt = expiresAt;
 
-        public PaymentSlipBuilder WithDates(DateTime processedAt, DateTime expiresAt) {
-            _paymentSlipModel.ProcessedAt = processedAt;
-            _paymentSlipModel.ExpiresAt = expiresAt;
+        return this;
+    }
 
-            return this;
-        }
-
-        public PaymentSlipModel Build() {
-            return _paymentSlipModel;
-        }
+    public PaymentSlipModel Build()
+    {
+        return _paymentSlipModel;
     }
 }

@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AwesomeShopPatterns.API.Application.Models;
+using Adapter.Application.Models;
 
-namespace AwesomeShopPatterns.API.Infrastructure.Deliveries
+namespace Adapter.Infrastructure.Deliveries;
+
+public class InternationalDeliveryService : IDeliveryService
 {
-    public class InternationalDeliveryService : IDeliveryService
+    public void Deliver(OrderInputModel model)
     {
-        public void Deliver(OrderInputModel model)
-        {
-            
-        }
     }
 }

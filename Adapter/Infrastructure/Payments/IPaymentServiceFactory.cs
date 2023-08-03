@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AwesomeShopPatterns.API.Core.Enums;
+using Adapter.Core.Enums;
 
-namespace AwesomeShopPatterns.API.Infrastructure.Payments
+namespace Adapter.Infrastructure.Payments;
+
+public interface IPaymentServiceFactory
 {
-    public interface IPaymentServiceFactory
-    {
-        IPaymentService GetService(PaymentMethod paymentMethod);
-    }
+    IPaymentService GetService(PaymentMethod paymentMethod);
 }
